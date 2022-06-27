@@ -12,7 +12,7 @@ const Shop = () => {
         fetch('products.json')
         .then(res=>res.json())
         .then(data=>setProducts(data))
-    },[])
+    },[]);
 
     useEffect(()=>{
         const storedCart =getStoredCart();
@@ -30,7 +30,7 @@ const Shop = () => {
 
     const handleAddToCart=(product)=>{
         let newCart =[];
-        const exists = cart.find(singleProduct => product.id === product.id);
+        const exists = cart.find(singleProduct => singleProduct.id === product.id);
         if(!exists){
             product.quantity =1;
             newCart=[...cart,product];
