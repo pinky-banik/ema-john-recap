@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cart = ({cart}) => {
+const Cart = ({cart,children}) => {
     
     let total = 0;
     let shipping = 0;
@@ -22,6 +22,7 @@ const Cart = ({cart}) => {
                 <p>Total Shipping : ${shipping} </p>
                 <p>Tax : {tax}</p>
                 <p className='font-bold '>Grand Total : ${grandTotal} </p>
+                {children}
             </div>
     );
 };

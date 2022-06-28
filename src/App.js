@@ -5,6 +5,7 @@ import Shop from './Componets/Shop';
 import NotFound from './Componets/NotFound';
 import ProductDetails from './Componets/ProductDetails';
 import Orders from './Componets/Orders';
+import Inventory from './Componets/Inventory';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/shop' element={<Shop/>}/>
         <Route path='/orders' element={<Orders/>}/>
-        <Route path='/inventory' element={<Shop/>}/>
+        <Route path='/inventory' element={<Inventory/>}/>
         <Route path='/About' element={<Shop/>}/>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
