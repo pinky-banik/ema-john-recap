@@ -1,33 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { addToDb, getStoredCart } from '../utilities/fakedb';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import UseCart from '../Hooks/useCart';
+import UseProducts from '../Hooks/UseProducts';
+import { addToDb} from '../utilities/fakedb';
 import Cart from './Cart';
 import Product from './Product';
 
 const Shop = () => {
-    const[products,setProducts] = useState([]);
-    const [cart,setCart] = useState([]);
+    const[products,setProducts] = UseProducts();
+    const [cart,setCart] = UseCart();
+    const navigate = useNavigate();
     
-
-    useEffect(()=>{
-        fetch('products.json')
-        .then(res=>res.json())
-        .then(data=>setProducts(data))
-    },[]);
-
-    useEffect(()=>{
-        const storedCart =getStoredCart();
-        const savedCart = [];
-        for (const id in storedCart){
-            const addedProduct = products.find(product=>product.id===id);
-            if(addedProduct){
-                const quantity = storedCart[id];
-                addedProduct.quantity=quantity;
-                savedCart.push(addedProduct);
-            }
-            setCart(savedCart);
-        }
-    },[products])
-
     const handleAddToCart=(product)=>{
         let newCart =[];
         const exists = cart.find(singleProduct => singleProduct.id === product.id);
@@ -57,7 +40,7 @@ const Shop = () => {
                     </Product>)
                 }
             </div>
-            <div>
+            <div className='w-1/4 cart fixed right-0 shadow-md p-5 mx-2 my-5 rounded bg-orange-200 leading-10'>
                 <Cart
                 cart={cart}
                 />

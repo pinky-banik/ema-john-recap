@@ -2,6 +2,9 @@ import Navbar from './Componets/Navbar';
 import {Routes,Route} from 'react-router-dom';
 import Home from './Componets/Home';
 import Shop from './Componets/Shop';
+import NotFound from './Componets/NotFound';
+import ProductDetails from './Componets/ProductDetails';
+import Orders from './Componets/Orders';
 
 function App() {
   return (
@@ -10,9 +13,10 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/shop' element={<Shop/>}/>
-        <Route path='/orders' element={<Shop/>}/>
+        <Route path='/orders' element={<Orders/>}/>
         <Route path='/inventory' element={<Shop/>}/>
         <Route path='/About' element={<Shop/>}/>
+        <Route path='*' element={<NotFound/>}/>
       </Routes>
     </div>
   );

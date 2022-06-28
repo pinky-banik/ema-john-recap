@@ -15,7 +15,7 @@ const Cart = ({cart}) => {
     const grandTotal = (total+shipping+parseFloat(tax)).toFixed(2);
 
     return (
-        <div className='w-1/4 cart fixed right-0 shadow-md p-5 mx-2 my-5 rounded bg-orange-200 leading-10'>
+        <div >
                 <h1 className='text-lg font-bold my-2'>Order Summary</h1>
                 <p className='text-md'>Selected Items: {quantity}</p>
                 <p>Total price : ${total}</p>
