@@ -10,8 +10,7 @@ const Navbar = () => {
                 <NavLink className="px-5 hover:text-orange-500" to="/">Home</NavLink>
                 <NavLink className="px-5 hover:text-orange-500" to="/shop">Shop</NavLink>
                 <NavLink className="px-5 hover:text-orange-500" to="/orders">Orders</NavLink>
-                <NavLink className="px-5 hover:text-orange-500" to="/inventory">Inventory</NavLink>
-                <NavLink className="px-5 hover:text-orange-500" to="/about">About</NavLink>
+                <NavLink className="px-5 hover:text-orange-500" to="/login">Login</NavLink>
             </nav>
         </div>
     );

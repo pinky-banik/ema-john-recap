@@ -6,6 +6,8 @@ import NotFound from './Componets/NotFound';
 import ProductDetails from './Componets/ProductDetails';
 import Orders from './Componets/Orders';
 import Inventory from './Componets/Inventory';
+import Login from './Componets/Login';
+import Register from './Componets/Register';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path='/orders' element={<Orders/>}/>
         <Route path='/inventory' element={<Inventory/>}/>
         <Route path='/About' element={<Shop/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/signUp' element={<Register/>}/>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
     </div>
