@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import {createUserWithEmailAndPassword } from "firebase/auth";
+import { Link, useNavigate } from 'react-router-dom';
 import auth from './../Firebase/Config';
-
+import {useAuthState, useCreateUserWithEmailAndPassword} from 'react-firebase-hooks/auth';
 
 const Register = () => {
     const[email,setEmail] = useState('');
-const [password,setPassWord] = useState('');
-const [confirmPassword,setConfirmPassword] = useState('');
-const [error,setError] = useState('');
+    const [password,setPassWord] = useState('');
+    const [confirmPassword,setConfirmPassword] = useState('');
+    const [error,setError] = useState('');
+
+    const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
+    const[user] = useAuthState(auth);
+    const navigate = useNavigate();
+
+    
+
 
 const handleEmailBlur = event =>{
     setEmail(event.target.value);
@@ -25,6 +31,11 @@ const handleCreateUser = event =>{
         setError("Your two password didn't match");
         return;
     }
+    createUserWithEmailAndPassword(email,password);
+    if(user){
+        navigate('/');
+    }
+    console.log(user);
 }
 
 
@@ -52,15 +63,7 @@ const handleCreateUser = event =>{
                 <Link className='text-center mx-auto' to="/login">
                 <small >Already have an account? <span className='text-orange-500'>Login</span> </small>
                 </Link>
-                <div className='flex mx-auto justify-center'>
-                    <p>--------------- </p>
-                    <p>Or</p>
-                    <p> ----------------</p>
-
-                </div>
-                <button className='border-4 rounded p-2 mx-auto w-full'>Google Sign In</button>
             </form>
-            //ami ekta olosh
             </div>
     );
 };

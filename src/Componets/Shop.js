@@ -27,9 +27,6 @@ const Shop = () => {
     },[searchText]);
 
 
-    console.log(searchText);
-
-
     const handleSearch = event =>{
         setSearchText(event.target.value);
         
