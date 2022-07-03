@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSignInWithGoogle, useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import auth from '../Firebase/Config';
 
 
@@ -11,8 +11,9 @@ const Login = () => {
     const [signInWithGoogle] = useSignInWithGoogle(auth);
     const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
     const[ user, loading, error] = useAuthState(auth);
-    const navigate = useNavigate();
-    
+    let location = useLocation();
+    let navigate = useNavigate();
+    let from = location.state?.from?.pathname || "/";
     
     
     const handleEmailBlur = event =>{
@@ -26,15 +27,17 @@ const Login = () => {
         console.log(user);
     }
 
+
     const handleSignIn = e =>{
         e.preventDefault();
         signInWithEmailAndPassword(email,password);
-        if(user){
-            navigate('/');
-        }
         console.log(user);
     }
     
+    if(user){
+            navigate(from, { replace: true });
+        }
+
     return (
         <div className='flex justify-center items-center shadow-lg w-3/4 m-auto my-5'>
             <h2>
